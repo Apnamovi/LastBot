@@ -149,31 +149,31 @@ async def next_page(bot, query):
             ]
             for file in files
         ]
-    try:
-        if settings['auto_delete']:
-            btn.insert(0, 
-                [
-                    InlineKeyboardButton(f'ɪɴꜰᴏ', 'reqinfo'),
-                    InlineKeyboardButton(f'ᴍᴏᴠɪᴇ', 'minfo'),
-                    InlineKeyboardButton(f'ꜱᴇʀɪᴇꜱ', 'sinfo')
-                ]
-            )
-        else:
-            btn.insert(0, 
-                [
-                    InlineKeyboardButton(f'ᴍᴏᴠɪᴇ', 'minfo'),
-                    InlineKeyboardButton(f'ꜱᴇʀɪᴇꜱ', 'sinfo')
-                ]
-            )            
-    except KeyError:
-        await save_group_settings(query.message.chat.id, 'auto_delete', True)
-        btn.insert(0, 
-            [
-                InlineKeyboardButton(f'ɪɴꜰᴏ', 'reqinfo'),
-                InlineKeyboardButton(f'ᴍᴏᴠɪᴇ', 'minfo'),
-                InlineKeyboardButton(f'ꜱᴇʀɪᴇꜱ', 'sinfo')
-            ]
-        )
+#    try:
+#        if settings['auto_delete']:
+#            btn.insert(0, 
+#                [
+#                    InlineKeyboardButton(f'ɪɴꜰᴏ', 'reqinfo'),
+#                    InlineKeyboardButton(f'ᴍᴏᴠɪᴇ', 'minfo'),
+#                    InlineKeyboardButton(f'ꜱᴇʀɪᴇꜱ', 'sinfo')
+#                ]
+#            )
+#        else:
+#            btn.insert(0, 
+#                [
+#                    InlineKeyboardButton(f'ᴍᴏᴠɪᴇ', 'minfo'),
+#                    InlineKeyboardButton(f'ꜱᴇʀɪᴇꜱ', 'sinfo')
+#                ]
+#            )            
+#    except KeyError:
+#        await save_group_settings(query.message.chat.id, 'auto_delete', True)
+#        btn.insert(0, 
+#            [
+#                InlineKeyboardButton(f'ɪɴꜰᴏ', 'reqinfo'),
+#                InlineKeyboardButton(f'ᴍᴏᴠɪᴇ', 'minfo'),
+#                InlineKeyboardButton(f'ꜱᴇʀɪᴇꜱ', 'sinfo')
+#            ]
+#        )
     try:
         if settings['max_btn']:
             if 0 < offset <= 10:
@@ -321,33 +321,33 @@ async def language_check(bot, query):
                 for file in files
             ]
 
-        try:
-            if settings['auto_delete']:
-                btn.insert(0, 
-                    [
-                        InlineKeyboardButton(f'ɪɴꜰᴏ', 'reqinfo'),
-                        InlineKeyboardButton(f'ᴍᴏᴠɪᴇ', 'minfo'),
-                        InlineKeyboardButton(f'ꜱᴇʀɪᴇꜱ', 'sinfo')
-                    ]
-                )
-
-            else:
-                btn.insert(0, 
-                    [
-                        InlineKeyboardButton(f'ᴍᴏᴠɪᴇ', 'minfo'),
-                        InlineKeyboardButton(f'ꜱᴇʀɪᴇꜱ', 'sinfo')
-                    ]
-                )
-                    
-        except KeyError:
-            await save_group_settings(query.message.chat.id, 'auto_delete', True)
-            btn.insert(0, 
-                [
-                    InlineKeyboardButton(f'ɪɴꜰᴏ', 'reqinfo'),
-                    InlineKeyboardButton(f'ᴍᴏᴠɪᴇ', 'minfo'),
-                    InlineKeyboardButton(f'ꜱᴇʀɪᴇꜱ', 'sinfo')
-                ]
-            )
+#        try:
+#            if settings['auto_delete']:
+#                btn.insert(0, 
+#                    [
+#                        InlineKeyboardButton(f'ɪɴꜰᴏ', 'reqinfo'),
+#                        InlineKeyboardButton(f'ᴍᴏᴠɪᴇ', 'minfo'),
+#                        InlineKeyboardButton(f'ꜱᴇʀɪᴇꜱ', 'sinfo')
+#                    ]
+#                )
+#
+#            else:
+#                btn.insert(0, 
+#                    [
+#                        InlineKeyboardButton(f'ᴍᴏᴠɪᴇ', 'minfo'),
+#                        InlineKeyboardButton(f'ꜱᴇʀɪᴇꜱ', 'sinfo')
+#                    ]
+#                )
+#                    
+#        except KeyError:
+#            await save_group_settings(query.message.chat.id, 'auto_delete', True)
+#            btn.insert(0, 
+#                [
+#                    InlineKeyboardButton(f'ɪɴꜰᴏ', 'reqinfo'),
+#                    InlineKeyboardButton(f'ᴍᴏᴠɪᴇ', 'minfo'),
+#                    InlineKeyboardButton(f'ꜱᴇʀɪᴇꜱ', 'sinfo')
+#                ]
+#            )
         
         btn.insert(0, [
             InlineKeyboardButton("! Sᴇɴᴅ Aʟʟ Tᴏ PM !", callback_data=f"send_fall#{pre}#{0}#{userid}"),
@@ -686,7 +686,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
         if not files_:
             return await query.answer('Nᴏ sᴜᴄʜ ғɪʟᴇ ᴇxɪsᴛ.')
         files = files_[0]
-        title = {' '.join(filter(lambda x: not x.startswith('[') and not x.startswith('@') and not x.startswith('www.'), file.file_name.split()))}
+        title = {' '.join(filter(lambda x: not x.startswith('[') and not x.startswith('@') and not x.startswith('www.'), files.file_name.split()))}
         size = get_size(files.file_size)
         f_caption = files.caption
         settings = await get_settings(query.message.chat.id)
@@ -699,7 +699,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
                 logger.exception(e)
             f_caption = f_caption
         if f_caption is None:
-            f_caption = f"{files.file_name}"
+            f_caption = f" {' '.join(filter(lambda x: not x.startswith('[') and not x.startswith('@') and not x.startswith('www.'), file.file_name.split()))}"
 
         try:
             if AUTH_CHANNEL and not await is_subscribed(client, query):
@@ -1510,31 +1510,31 @@ async def auto_filter(client, msg, spoll=False):
             ]
             for file in files
         ]
-    try:
-        if settings['auto_delete']:
-            btn.insert(0, 
-                [
-                    InlineKeyboardButton(f'ɪɴꜰᴏ', 'reqinfo'),
-                    InlineKeyboardButton(f'ᴍᴏᴠɪᴇ', 'minfo'),
-                    InlineKeyboardButton(f'ꜱᴇʀɪᴇꜱ', 'sinfo')
-                ]
-            )
-        else:
-            btn.insert(0, 
-                [
-                    InlineKeyboardButton(f'ᴍᴏᴠɪᴇ', 'minfo'),
-                    InlineKeyboardButton(f'ꜱᴇʀɪᴇꜱ', 'sinfo')
-                ]
-            )       
-    except KeyError:
-        await save_group_settings(message.chat.id, 'auto_delete', True)
-        btn.insert(0, 
-            [
-                InlineKeyboardButton(f'ɪɴꜰᴏ', 'reqinfo'),
-                InlineKeyboardButton(f'ᴍᴏᴠɪᴇ', 'minfo'),
-                InlineKeyboardButton(f'ꜱᴇʀɪᴇꜱ', 'sinfo')
-            ]
-        )
+#    try:
+#        if settings['auto_delete']:
+#            btn.insert(0, 
+#                [
+#                    InlineKeyboardButton(f'ɪɴꜰᴏ', 'reqinfo'),
+#                    InlineKeyboardButton(f'ᴍᴏᴠɪᴇ', 'minfo'),
+#                    InlineKeyboardButton(f'ꜱᴇʀɪᴇꜱ', 'sinfo')
+#                ]
+#            )
+#        else:
+#            btn.insert(0, 
+#                [
+#                    InlineKeyboardButton(f'ᴍᴏᴠɪᴇ', 'minfo'),
+#                    InlineKeyboardButton(f'ꜱᴇʀɪᴇꜱ', 'sinfo')
+#                ]
+#            )       
+#    except KeyError:
+#        await save_group_settings(message.chat.id, 'auto_delete', True)
+#        btn.insert(0, 
+#            [
+#                InlineKeyboardButton(f'ɪɴꜰᴏ', 'reqinfo'),
+#                InlineKeyboardButton(f'ᴍᴏᴠɪᴇ', 'minfo'),
+#                InlineKeyboardButton(f'ꜱᴇʀɪᴇꜱ', 'sinfo')
+#            ]
+#        )
 
     btn.insert(0, [
         InlineKeyboardButton("! Sᴇɴᴅ Aʟʟ Tᴏ PM !", callback_data=f"send_fall#{pre}#{0}#{message.from_user.id}"),
