@@ -131,7 +131,7 @@ async def next_page(bot, query):
         btn = [
             [
                 InlineKeyboardButton(
-                    text=f"[{get_size(file.file_size)}] {' '.join(filter(lambda x: not x.startswith('[') and not x.startswith('@') and not x.startswith('www.'), file.file_name.split()))}", url=f"https://t.me/{temp.U_NAME}?start=files_{file.file_id}"
+                    text=f"[{get_size(file.file_size)}] {' '.join(filter(lambda x: not x.startswith('[') and not x.startswith(']') and not x.startswith('{') and not x.startswith('}') and not x.startswith('@') and not x.startswith('www.'), file.file_name.split()))}", url=f"https://t.me/{temp.U_NAME}?start=files_{file.file_id}"
                 ),
             ]
             for file in files
@@ -140,7 +140,7 @@ async def next_page(bot, query):
         btn = [
             [
                 InlineKeyboardButton(
-                    text=f"[{get_size(file.file_size)}] {' '.join(filter(lambda x: not x.startswith('[') and not x.startswith('@') and not x.startswith('www.'), file.file_name.split()))}", url=f"https://t.me/{temp.U_NAME}?start=files_{file.file_id}"
+                    text=f"[{get_size(file.file_size)}] {' '.join(filter(lambda x: not x.startswith('[') and not x.startswith(']') and not x.startswith('{') and not x.startswith('}') and not x.startswith('@') and not x.startswith('www.'), file.file_name.split()))}", url=f"https://t.me/{temp.U_NAME}?start=files_{file.file_id}"
 #                ),
 #                InlineKeyboardButton(
 #                    text=f"{get_size(file.file_size)}",
@@ -240,7 +240,7 @@ async def next_page(bot, query):
                 ],
             )
     btn.insert(0, [
-        InlineKeyboardButton("! Sᴇɴᴅ Aʟʟ Tᴏ PM !", callback_data=f"send_fall#files#{offset}#{req}"),
+#        InlineKeyboardButton("! Sᴇɴᴅ Aʟʟ Tᴏ PM !", callback_data=f"send_fall#files#{offset}#{req}"),
         InlineKeyboardButton("! Lᴀɴɢᴜᴀɢᴇs !", callback_data=f"select_lang#{req}")
     ])
     btn.insert(0, [
@@ -301,7 +301,7 @@ async def language_check(bot, query):
             btn = [
                 [
                     InlineKeyboardButton(
-                        text=f"[{get_size(file.file_size)}] {' '.join(filter(lambda x: not x.startswith('[') and not x.startswith('@') and not x.startswith('www.'), file.file_name.split()))}", url=f"https://t.me/{temp.U_NAME}?start=files_{file.file_id}"
+                        text=f"[{get_size(file.file_size)}] {' '.join(filter(lambda x: not x.startswith('[') and not x.startswith(']') and not x.startswith('{') and not x.startswith('}') and not x.startswith('@') and not x.startswith('www.'), file.file_name.split()))}", url=f"https://t.me/{temp.U_NAME}?start=files_{file.file_id}"
                     ),
                 ]
                 for file in files
@@ -310,7 +310,7 @@ async def language_check(bot, query):
             btn = [
                 [
                     InlineKeyboardButton(
-                        text=f"[{get_size(file.file_size)}] {' '.join(filter(lambda x: not x.startswith('[') and not x.startswith('@') and not x.startswith('www.'), file.file_name.split()))}",
+                        text=f"[{get_size(file.file_size)}] {' '.join(filter(lambda x: not x.startswith('[') and not x.startswith(']') and not x.startswith('{') and not x.startswith('}') and not x.startswith('@') and not x.startswith('www.'), file.file_name.split()))}",
                         url=f"https://t.me/{temp.U_NAME}?start=files_{file.file_id}",
 #                    ),
 #                    InlineKeyboardButton(
@@ -350,7 +350,7 @@ async def language_check(bot, query):
 #            )
         
         btn.insert(0, [
-            InlineKeyboardButton("! Sᴇɴᴅ Aʟʟ Tᴏ PM !", callback_data=f"send_fall#{pre}#{0}#{userid}"),
+#            InlineKeyboardButton("! Sᴇɴᴅ Aʟʟ Tᴏ PM !", callback_data=f"send_fall#{pre}#{0}#{userid}"),
             InlineKeyboardButton("! Lᴀɴɢᴜᴀɢᴇs !", callback_data=f"select_lang#{userid}")
         ])
 
@@ -463,7 +463,7 @@ async def advantage_spoll_choker(bot, query):
                 if NO_RESULTS_MSG:
                     await bot.send_message(chat_id=LOG_CHANNEL, text=(script.NORSLTS.format(reqstr.id, reqstr.mention, movie)))
                 k = await query.message.edit(script.MVE_NT_FND)
-                await asyncio.sleep(10)
+                await asyncio.sleep(86400)
                 await k.delete()
 
 
@@ -686,7 +686,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
         if not files_:
             return await query.answer('Nᴏ sᴜᴄʜ ғɪʟᴇ ᴇxɪsᴛ.')
         files = files_[0]
-        title = ' '.join(filter(lambda x: not x.startswith('[') and not x.startswith('@') and not x.startswith('www.'), files.file_name.split()))
+        title = ' '.join(filter(lambda x: not x.startswith('[') and not x.startswith(']') and not x.startswith('{') and not x.startswith('}') and not x.startswith('@') and not x.startswith('www.'), files.file_name.split()))
         size = get_size(files.file_size)
         f_caption = files.caption
         settings = await get_settings(query.message.chat.id)
@@ -699,7 +699,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
                 logger.exception(e)
             f_caption = f_caption
         if f_caption is None:
-            f_caption = f" {' '.join(filter(lambda x: not x.startswith('[') and not x.startswith('@') and not x.startswith('www.'), file.file_name.split()))}"
+            f_caption = f" {' '.join(filter(lambda x: not x.startswith('[') and not x.startswith(']') and not x.startswith('{') and not x.startswith('}') and not x.startswith('@') and not x.startswith('www.'), file.file_name.split()))}"
 
         try:
             if AUTH_CHANNEL and not await is_subscribed(client, query):
@@ -766,7 +766,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
         if not files_:
             return await query.answer('Nᴏ sᴜᴄʜ ғɪʟᴇ ᴇxɪsᴛ.')
         files = files_[0]
-        title = ' '.join(filter(lambda x: not x.startswith('[') and not x.startswith('@') and not x.startswith('www.'), files.file_name.split()))
+        title = ' '.join(filter(lambda x: not x.startswith('[') and not x.startswith(']') and not x.startswith('{') and not x.startswith('}') and not x.startswith('@') and not x.startswith('www.'), files.file_name.split()))
         size = get_size(files.file_size)
         f_caption = files.caption
         if CUSTOM_FILE_CAPTION:
@@ -1491,7 +1491,7 @@ async def auto_filter(client, msg, spoll=False):
         btn = [
             [
                 InlineKeyboardButton(
-                    text=f"[{get_size(file.file_size)}] {' '.join(filter(lambda x: not x.startswith('[') and not x.startswith('@') and not x.startswith('www.'), file.file_name.split()))}", url=f"https://t.me/{temp.U_NAME}?start=files_{file.file_id}"
+                    text=f"[{get_size(file.file_size)}] {' '.join(filter(lambda x: not x.startswith('[') and not x.startswith(']') and not x.startswith('{') and not x.startswith('}') and not x.startswith('@') and not x.startswith('www.'), file.file_name.split()))}", url=f"https://t.me/{temp.U_NAME}?start=files_{file.file_id}"
                 ),
             ]
             for file in files
@@ -1500,7 +1500,7 @@ async def auto_filter(client, msg, spoll=False):
         btn = [
             [
                 InlineKeyboardButton(
-                    text=f"[{get_size(file.file_size)}] {' '.join(filter(lambda x: not x.startswith('[') and not x.startswith('@') and not x.startswith('www.'), file.file_name.split()))}",
+                    text=f"[{get_size(file.file_size)}] {' '.join(filter(lambda x: not x.startswith('[') and not x.startswith(']') and not x.startswith('{') and not x.startswith('}') and not x.startswith('@') and not x.startswith('www.'), file.file_name.split()))}",
                     url=f"https://t.me/{temp.U_NAME}?start=files_{file.file_id}",
 #                ),
 #                InlineKeyboardButton(
@@ -1537,7 +1537,7 @@ async def auto_filter(client, msg, spoll=False):
 #        )
 
     btn.insert(0, [
-        InlineKeyboardButton("! Sᴇɴᴅ Aʟʟ Tᴏ PM !", callback_data=f"send_fall#{pre}#{0}#{message.from_user.id}"),
+#        InlineKeyboardButton("! Sᴇɴᴅ Aʟʟ Tᴏ PM !", callback_data=f"send_fall#{pre}#{0}#{message.from_user.id}"),
         InlineKeyboardButton("! Lᴀɴɢᴜᴀɢᴇs !", callback_data=f"select_lang#{message.from_user.id}")
     ])
 
